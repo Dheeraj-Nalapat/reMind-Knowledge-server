@@ -5,7 +5,7 @@ from src.config import Config
 
 class OpenAITextVectorizer:
     def __init__(
-        self, model: str = "text-embedding-3-large"
+        self, model: str = "text-embedding-3-small"
     ):
         """
         Initialize the OpenAI embeddings client.
