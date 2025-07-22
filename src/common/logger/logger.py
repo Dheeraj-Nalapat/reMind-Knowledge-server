@@ -59,6 +59,11 @@ class DistributedLogger(object):
         if not self._silent:
             self._logger.warning(msg, *args, **kwargs)
 
+    def exception(self, msg, *args, **kwargs):
+        msg = f"{self._tag}::{msg}"
+        if not self._silent:
+            self._logger.exception(msg, *args, **kwargs)
+
 
 log_wrapper = DistributedLogger()
 
