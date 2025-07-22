@@ -1,8 +1,8 @@
 import pika
 import json
 from src.config import Config
-# from src.processor.pipeline import process_entry
 from src.common.logger.logger import get_logger
+from src.process_knowledge import process_content_entry
 
 logger = get_logger(__name__)
 
@@ -18,7 +18,7 @@ def start_worker():
         logger.info("Received a message.")
         try:
             entry = json.loads(body.decode())
-            # process_entry(entry)
+            process_content_entry(entry)
             ch.basic_ack(delivery_tag=method.delivery_tag)
             logger.info("Processed and acknowledged message.")
         except Exception as e:
