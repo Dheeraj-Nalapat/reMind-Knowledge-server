@@ -19,6 +19,7 @@ def start_worker():
         try:
             entry = json.loads(body.decode())
             process_content_entry(entry)
+            logger.info(f"Received entry: {entry}")
             ch.basic_ack(delivery_tag=method.delivery_tag)
             logger.info("Processed and acknowledged message.")
         except Exception as e:
