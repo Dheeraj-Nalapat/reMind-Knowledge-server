@@ -1,6 +1,7 @@
 import requests
 from datetime import datetime
 from src.config import Config
+from src.common.embedding.embedder import OpenAITextVectorizer
 
 NOTION_VERSION = "2022-06-28"
 
@@ -81,4 +82,7 @@ def process_content_entry(message):
     new_page_id = create_empty_notion_page(Config.NOTION_API_KEY, Config.PARENT_PAGE_ID)
     block_body = create_notion_block_body(message["content"])
     send_notion_patch_request(new_page_id, Config.NOTION_API_KEY, block_body)
+
+    embedded_text = OpenAITextVectorizer().embed_text(message["content"])
+
     
