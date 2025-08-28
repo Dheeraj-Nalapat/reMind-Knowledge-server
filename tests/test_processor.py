@@ -1,7 +1,9 @@
 """Tests for the message processor."""
 
 import json
+
 import pytest
+
 from worker.processor import MessageProcessor
 
 

@@ -3,10 +3,11 @@ import logging
 import sys
 import time
 
+
 class DistributedLogger(object):
-    _tag=""
-    _silent= False
-    
+    _tag = ""
+    _silent = False
+
     @property
     def logger(self):
         return self._logger
@@ -67,6 +68,7 @@ class DistributedLogger(object):
 
 log_wrapper = DistributedLogger()
 
+
 def get_formatter():
     formatter = "%(asctime)s — %(name)s — %(levelname)s — %(message)s"
     return formatter
@@ -98,6 +100,7 @@ def set_logger_tag(log_tag):
 def set_logger_silent(log_silent):
     log_wrapper.silent = log_silent
 
+
 def log_function_entry_and_exit(decorated_function):
     @functools.wraps(decorated_function)
     def wrapper(*dec_fn_args, **dec_fn_kwargs):
@@ -111,8 +114,11 @@ def log_function_entry_and_exit(decorated_function):
         out = decorated_function(*dec_fn_args, **dec_fn_kwargs)
         end_time = time.perf_counter()
 
-        logging.info(f"<<< Exiting function: {func_name}. Time taken: {end_time-start_time} secs", extra=name_dict)
+        logging.info(
+            f"<<< Exiting function: {func_name}. Time taken: {end_time-start_time} secs",
+            extra=name_dict,
+        )
 
         return out
 
-    return wrapper    
+    return wrapper

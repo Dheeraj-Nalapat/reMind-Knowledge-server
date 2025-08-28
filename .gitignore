@@ -193,6 +193,10 @@ cython_debug/
 # VS Code
 .vscode/
 
+# cursor
+.cursorrules
+.cursor/
+
 # Sublime Text
 *.sublime-project
 *.sublime-workspace

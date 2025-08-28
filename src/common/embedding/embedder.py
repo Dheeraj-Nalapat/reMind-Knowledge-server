@@ -1,12 +1,12 @@
 from typing import List
+
 from langchain_openai import OpenAIEmbeddings
+
 from src.config import Config
 
 
 class OpenAITextVectorizer:
-    def __init__(
-        self, model: str = "text-embedding-3-small"
-    ):
+    def __init__(self, model: str = "text-embedding-3-small"):
         """
         Initialize the OpenAI embeddings client.
         If api_key is not provided, it will be picked up from OPENAI_API_KEY env var.

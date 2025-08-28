@@ -1,6 +1,7 @@
 import psycopg2
-from src.config import Config
+
 from src.common.logger.logger import get_logger
+from src.config import Config
 
 logger = get_logger(__name__)
 
@@ -18,6 +19,7 @@ CREATE TABLE IF NOT EXISTS notion_pages (
 );
 """
 
+
 def run_migration():
     logger.info("Connecting to database...")
     conn = psycopg2.connect(Config.PG_URL)
@@ -28,6 +30,7 @@ def run_migration():
     cur.close()
     conn.close()
     logger.info("Migration completed successfully.")
+
 
 if __name__ == "__main__":
     run_migration()
